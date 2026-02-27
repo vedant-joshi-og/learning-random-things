@@ -5,30 +5,45 @@ Comprehensive learning materials for Full Stack Development, Python, SQL, and Po
 ## Structure
 ```
 .
-├── FSD/                    # Full Stack Development (Node.js)
-│   ├── unit-1/            # Basic JavaScript concepts
-│   ├── unit-2/            # Advanced JS & file operations
-│   ├── unit-3/            # HTML integration
-│   └── package.json       # Dependencies
-├── PYTHON/                 # Python programming
-│   ├── unit-3-regex.ipynb        # Regular expressions
-│   ├── unit-4-5-6-ML.ipynb       # Machine Learning
-│   ├── unit-8-webscraping-socket.ipynb  # Web scraping
-│   ├── unit-9-10-django/         # Django framework
-│   ├── pandas-*.ipynb            # Data analysis
-│   └── Churn.csv                 # Sample dataset
-├── TYPESCRIPT/                   # Basic TypeScript concepts
-|   ├── Bank.ts               # Small bank code
-|   └── dataTypes.ts            # Datatypes.
-├── Angualr/                   # Basic Angular Code
-|   ├── src/main.ts               # Learning file.
-|   └── src/todo.ts            # Todo application. [change "browser" field inside /angular.json]
-├── SQL/                    # Database queries
-│   ├── sql-0.txt         # Basic SQL
-│   └── sql-DDL.txt       # Data Definition Language
-└── POWERBI/               # Business Intelligence
-    ├── learning.pbix     # Power BI project
-    └── *.csv            # Sample data files
+.
+|-- FSD
+|   |-- unit-1
+|   |-- unit-2
+|   `-- unit-3
+|-- POWERBI
+|   |-- customers.csv
+|   |-- learning.pbix
+|   |-- products.csv
+|   `-- sales.csv
+|-- PYTHON
+|   |-- Churn.csv
+|   |-- pandas-2.ipynb
+|   |-- pandas-clening.ipynb
+|   |-- unit-3-regex.ipynb
+|   |-- unit-4-5-6-ML.ipynb
+|   |-- unit-8-webscraping-socket.ipynb
+|   `-- unit-9-10-django
+|-- SQL
+|   |-- sql-0.txt
+|   |-- sql-CONSTRAINTS.txt
+|   |-- sql-CTE.txt
+|   |-- sql-DDL.txt
+|   |-- sql-DML.txt
+|   |-- sql-DQL.txt
+|   |-- sql-FUNCTIONS.txt
+|   |-- sql-INDEXES.txt
+|   |-- sql-JOINS.txt
+|   |-- sql-SUBQUERIES.txt
+|   |-- sql-TRANSACTIONS.txt
+|   |-- sql-VIEWS.txt
+|   `-- sql-WINDOW-FUNCTIONS.txt
+|-- TYPESCRIPT
+|   |-- Bank.ts
+|   `-- dataTypes.ts
+`-- angular-playground
+    |-- angular.json
+    |-- public
+    |-- src
 ```
 
 ## Topics
