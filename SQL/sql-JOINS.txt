@@ -1,0 +1,37 @@
+! SQL JOINS
+
+! INNER JOIN - Returns matching rows from both tables
+SELECT e.name, d.dept_name 
+FROM Employee e
+INNER JOIN Department d ON e.dept_id = d.dept_id;
+
+! LEFT JOIN - All from left table + matching from right
+SELECT e.name, d.dept_name 
+FROM Employee e
+LEFT JOIN Department d ON e.dept_id = d.dept_id;
+
+! RIGHT JOIN - All from right table + matching from left
+SELECT e.name, d.dept_name 
+FROM Employee e
+RIGHT JOIN Department d ON e.dept_id = d.dept_id;
+
+! FULL OUTER JOIN - All rows from both tables
+SELECT e.name, d.dept_name 
+FROM Employee e
+FULL OUTER JOIN Department d ON e.dept_id = d.dept_id;
+
+! CROSS JOIN - Cartesian product
+SELECT e.name, d.dept_name 
+FROM Employee e
+CROSS JOIN Department d;
+
+! SELF JOIN - Join table to itself
+SELECT e1.name as Employee, e2.name as Manager
+FROM Employee e1
+LEFT JOIN Employee e2 ON e1.manager_id = e2.id;
+
+! Multiple JOINS
+SELECT e.name, d.dept_name, p.project_name
+FROM Employee e
+INNER JOIN Department d ON e.dept_id = d.dept_id
+INNER JOIN Projects p ON e.id = p.emp_id;

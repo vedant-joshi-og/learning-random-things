@@ -1,0 +1,29 @@
+! SQL INDEXES - Improve query performance
+
+! Create Index
+CREATE INDEX idx_employee_name ON Employee(name);
+CREATE INDEX idx_dept_id ON Employee(dept_id);
+
+! Composite Index
+CREATE INDEX idx_name_dept ON Employee(name, dept_id);
+
+! Unique Index
+CREATE UNIQUE INDEX idx_email ON Employee(email);
+
+! View Indexes
+\di -- PostgreSQL
+SHOW INDEX FROM Employee; -- MySQL
+
+! Drop Index
+DROP INDEX idx_employee_name;
+
+! When to use indexes:
+-- Columns used in WHERE clauses
+-- Columns used in JOIN conditions
+-- Columns used in ORDER BY
+-- Foreign key columns
+
+! When NOT to use indexes:
+-- Small tables
+-- Columns with frequent updates
+-- Columns with low cardinality

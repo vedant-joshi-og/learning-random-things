@@ -1,0 +1,42 @@
+! SQL FUNCTIONS
+
+! String Functions
+SELECT UPPER(name) FROM Employee;
+SELECT LOWER(name) FROM Employee;
+SELECT LENGTH(name) FROM Employee;
+SELECT CONCAT(name, ' - ', address) FROM Employee;
+SELECT SUBSTRING(name, 1, 3) FROM Employee;
+SELECT TRIM(name) FROM Employee;
+SELECT REPLACE(name, 'John', 'Jane') FROM Employee;
+
+! Numeric Functions
+SELECT ROUND(salary, 2) FROM Employee;
+SELECT CEIL(salary) FROM Employee;
+SELECT FLOOR(salary) FROM Employee;
+SELECT ABS(balance) FROM Account;
+SELECT MOD(id, 2) FROM Employee;
+
+! Date Functions
+SELECT NOW();
+SELECT CURRENT_DATE;
+SELECT CURRENT_TIME;
+SELECT EXTRACT(YEAR FROM created_at) FROM Orders;
+SELECT DATE_PART('month', created_at) FROM Orders;
+SELECT AGE(birth_date) FROM Employee;
+SELECT created_at + INTERVAL '1 day' FROM Orders;
+
+! Conditional Functions
+SELECT name, 
+    CASE 
+        WHEN salary > 50000 THEN 'High'
+        WHEN salary > 30000 THEN 'Medium'
+        ELSE 'Low'
+    END as salary_grade
+FROM Employee;
+
+SELECT COALESCE(dept_id, 0) FROM Employee; -- Return first non-null
+SELECT NULLIF(value1, value2); -- Return NULL if equal
+
+! Aggregate Functions
+SELECT COUNT(*), AVG(salary), SUM(salary), MIN(salary), MAX(salary)
+FROM Employee;

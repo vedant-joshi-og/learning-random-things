@@ -1,0 +1,33 @@
+! SQL TRANSACTIONS - ACID properties
+
+! Basic Transaction
+BEGIN; -- or START TRANSACTION;
+UPDATE Account SET balance = balance - 100 WHERE id = 1;
+UPDATE Account SET balance = balance + 100 WHERE id = 2;
+COMMIT;
+
+! Rollback on Error
+BEGIN;
+UPDATE Account SET balance = balance - 100 WHERE id = 1;
+-- Something goes wrong
+ROLLBACK;
+
+! Savepoint
+BEGIN;
+UPDATE Account SET balance = balance - 100 WHERE id = 1;
+SAVEPOINT sp1;
+UPDATE Account SET balance = balance + 100 WHERE id = 2;
+ROLLBACK TO sp1; -- Undo only second update
+COMMIT;
+
+! Transaction Isolation Levels
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+
+! ACID Properties:
+-- Atomicity: All or nothing
+-- Consistency: Valid state
+-- Isolation: Concurrent transactions
+-- Durability: Permanent changes

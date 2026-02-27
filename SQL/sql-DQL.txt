@@ -1,0 +1,44 @@
+! DQL - Data Query Language (Advanced SELECT)
+
+! WHERE Clause
+SELECT * FROM Employee WHERE dept_id = 1;
+SELECT * FROM Employee WHERE name = 'John Doe' AND dept_id = 1;
+SELECT * FROM Employee WHERE dept_id = 1 OR dept_id = 2;
+SELECT * FROM Employee WHERE NOT dept_id = 1;
+
+! LIKE Pattern Matching
+SELECT * FROM Employee WHERE name LIKE 'J%'; -- Starts with J
+SELECT * FROM Employee WHERE name LIKE '%son'; -- Ends with son
+SELECT * FROM Employee WHERE name LIKE '%oh%'; -- Contains oh
+
+! ORDER BY
+SELECT * FROM Employee ORDER BY name ASC;
+SELECT * FROM Employee ORDER BY dept_id DESC, name ASC;
+
+! LIMIT & OFFSET
+SELECT * FROM Employee LIMIT 5;
+SELECT * FROM Employee LIMIT 5 OFFSET 10; -- Skip 10, get 5
+
+! DISTINCT
+SELECT DISTINCT dept_id FROM Employee;
+
+! Aggregate Functions
+SELECT COUNT(*) FROM Employee;
+SELECT COUNT(dept_id) FROM Employee; -- Excludes NULL
+SELECT MAX(id) FROM Employee;
+SELECT MIN(id) FROM Employee;
+SELECT AVG(id) FROM Employee;
+SELECT SUM(id) FROM Employee;
+
+! GROUP BY
+SELECT dept_id, COUNT(*) FROM Employee GROUP BY dept_id;
+SELECT dept_id, COUNT(*) as emp_count FROM Employee GROUP BY dept_id;
+
+! HAVING (filter after GROUP BY)
+SELECT dept_id, COUNT(*) FROM Employee GROUP BY dept_id HAVING COUNT(*) > 2;
+
+! BETWEEN
+SELECT * FROM Employee WHERE id BETWEEN 1 AND 10;
+
+! IN
+SELECT * FROM Employee WHERE dept_id IN (1, 2, 3);

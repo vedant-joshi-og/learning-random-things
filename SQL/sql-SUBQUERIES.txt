@@ -1,0 +1,29 @@
+! SQL SUBQUERIES
+
+! Subquery in WHERE
+SELECT name FROM Employee 
+WHERE dept_id = (SELECT dept_id FROM Department WHERE dept_name = 'IT');
+
+! Subquery with IN
+SELECT name FROM Employee 
+WHERE dept_id IN (SELECT dept_id FROM Department WHERE dept_name LIKE 'IT%');
+
+! Subquery with EXISTS
+SELECT name FROM Employee e
+WHERE EXISTS (SELECT 1 FROM Department d WHERE d.dept_id = e.dept_id);
+
+! Subquery in SELECT
+SELECT name, (SELECT dept_name FROM Department d WHERE d.dept_id = e.dept_id) as dept
+FROM Employee e;
+
+! Subquery in FROM (Derived Table)
+SELECT avg_salary FROM 
+(SELECT AVG(salary) as avg_salary FROM Employee GROUP BY dept_id) as dept_avg;
+
+! Correlated Subquery
+SELECT e1.name, e1.salary FROM Employee e1
+WHERE salary > (SELECT AVG(salary) FROM Employee e2 WHERE e2.dept_id = e1.dept_id);
+
+! ANY / ALL
+SELECT name FROM Employee WHERE salary > ANY (SELECT salary FROM Employee WHERE dept_id = 1);
+SELECT name FROM Employee WHERE salary > ALL (SELECT salary FROM Employee WHERE dept_id = 1);

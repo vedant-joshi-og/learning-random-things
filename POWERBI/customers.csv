@@ -1,0 +1,16 @@
+CustomerID,CustomerName,City,Country,Region,CustomerType,RegistrationDate
+1,Tech Solutions Inc,New York,USA,North America,Enterprise,2022-01-15
+2,Global Retail Ltd,London,UK,Europe,Enterprise,2022-02-20
+3,StartUp Innovations,San Francisco,USA,North America,SMB,2022-03-10
+4,Manufacturing Corp,Berlin,Germany,Europe,Enterprise,2022-01-25
+5,Local Services,Toronto,Canada,North America,SMB,2022-04-05
+6,Digital Agency,Sydney,Australia,Asia Pacific,SMB,2022-02-14
+7,Finance Group,Tokyo,Japan,Asia Pacific,Enterprise,2022-03-22
+8,Consulting Firm,Paris,France,Europe,SMB,2022-01-30
+9,E-commerce Plus,Mumbai,India,Asia Pacific,Enterprise,2022-04-12
+10,Software House,Stockholm,Sweden,Europe,SMB,2022-02-28
+11,Data Analytics Co,Chicago,USA,North America,Enterprise,2022-03-18
+12,Cloud Services,Amsterdam,Netherlands,Europe,SMB,2022-01-08
+13,Mobile Solutions,Seoul,South Korea,Asia Pacific,SMB,2022-04-20
+14,AI Research Lab,Boston,USA,North America,Enterprise,2022-02-16
+15,Blockchain Ventures,Singapore,Singapore,Asia Pacific,Enterprise,2022-03-25

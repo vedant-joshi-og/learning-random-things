@@ -1,0 +1,46 @@
+! SQL WINDOW FUNCTIONS - Advanced analytics
+
+! ROW_NUMBER - Assign unique number
+SELECT name, dept_id, 
+    ROW_NUMBER() OVER (ORDER BY name) as row_num
+FROM Employee;
+
+! RANK - With gaps for ties
+SELECT name, salary,
+    RANK() OVER (ORDER BY salary DESC) as rank
+FROM Employee;
+
+! DENSE_RANK - No gaps for ties
+SELECT name, salary,
+    DENSE_RANK() OVER (ORDER BY salary DESC) as dense_rank
+FROM Employee;
+
+! PARTITION BY - Group within window
+SELECT name, dept_id, salary,
+    ROW_NUMBER() OVER (PARTITION BY dept_id ORDER BY salary DESC) as dept_rank
+FROM Employee;
+
+! LAG - Previous row value
+SELECT name, salary,
+    LAG(salary) OVER (ORDER BY id) as prev_salary
+FROM Employee;
+
+! LEAD - Next row value
+SELECT name, salary,
+    LEAD(salary) OVER (ORDER BY id) as next_salary
+FROM Employee;
+
+! FIRST_VALUE / LAST_VALUE
+SELECT name, dept_id, salary,
+    FIRST_VALUE(salary) OVER (PARTITION BY dept_id ORDER BY salary) as min_dept_salary
+FROM Employee;
+
+! Running Total
+SELECT name, salary,
+    SUM(salary) OVER (ORDER BY id) as running_total
+FROM Employee;
+
+! Moving Average
+SELECT name, salary,
+    AVG(salary) OVER (ORDER BY id ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) as moving_avg
+FROM Employee;

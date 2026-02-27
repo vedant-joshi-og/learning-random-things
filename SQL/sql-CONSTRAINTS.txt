@@ -1,0 +1,54 @@
+! SQL CONSTRAINTS
+
+! PRIMARY KEY - Unique identifier
+CREATE TABLE Student (
+    id INT PRIMARY KEY,
+    name VARCHAR(50)
+);
+
+CREATE TABLE Student (
+    id INT,
+    name VARCHAR(50),
+    PRIMARY KEY (id)
+);
+
+! FOREIGN KEY - Reference to another table
+CREATE TABLE Enrollment (
+    id INT PRIMARY KEY,
+    student_id INT,
+    FOREIGN KEY (student_id) REFERENCES Student(id)
+);
+
+! UNIQUE - No duplicate values
+CREATE TABLE User (
+    id INT PRIMARY KEY,
+    email VARCHAR(100) UNIQUE
+);
+
+! NOT NULL - Must have value
+CREATE TABLE Product (
+    id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    price DECIMAL(10,2) NOT NULL
+);
+
+! CHECK - Custom validation
+CREATE TABLE Employee (
+    id INT PRIMARY KEY,
+    age INT CHECK (age >= 18),
+    salary DECIMAL(10,2) CHECK (salary > 0)
+);
+
+! DEFAULT - Default value
+CREATE TABLE Order (
+    id INT PRIMARY KEY,
+    status VARCHAR(20) DEFAULT 'pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+! Composite Keys
+CREATE TABLE Enrollment (
+    student_id INT,
+    course_id INT,
+    PRIMARY KEY (student_id, course_id)
+);

@@ -1,0 +1,48 @@
+! DDL - Data Defination Language
+
+!create Database usinf
+CREATE DATABASE learing;
+
+! see all databases
+SHOW DATABASES; --for MariaDB, MySQL
+\l -- for postgreys
+
+! use database
+USE learning; -- for Maria , MySQL
+\c learning; -- for Postgreys
+
+! create table
+CREATE TABLE Employee(
+	id int PRIMARY KEY,
+	 name varchar(50),
+	 address text
+);
+
+CREATE TABLE Department (
+	dept_id SERIAL PRIMARY KEY,
+	dept_name VARCHAR(50) NOT NULL
+);
+
+
+! see tables
+SHOW TABLES; -- 
+\dt
+
+! add column to exsting table
+ALTER TABLE Employee ADD COLUMN dept_id INT;
+
+! add and remove constrint
+ALTER TABLE Employee
+	ADD CONSTRAINT fk_employee_department
+	FOREIGN KEY (dept_id)
+	REFERENCES Department(dept_id);
+
+DROP CONSTRAINT fk_employee_department;
+
+! verify Structure
+\d Employee
+
+! delete table
+DROP TABLE table_name -- delete table with structure
+TRUNCATE TABLE table_name --dalet table keeping structure
+! 

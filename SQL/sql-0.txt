@@ -1,0 +1,13 @@
+! start postgreys
+sudo systemctl status postgresql
+sudo systemctl status postgresql@17-main
+
+! spwan postgreys shell
+sudo -i -u postgres
+psql -- you might see shell posgreys=#
+
+! see version
+SELECT version();
+
+ 
+

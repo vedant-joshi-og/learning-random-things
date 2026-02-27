@@ -1,0 +1,53 @@
+! CTE - Common Table Expressions (WITH clause)
+
+! Basic CTE
+WITH dept_avg AS (
+    SELECT dept_id, AVG(salary) as avg_salary
+    FROM Employee
+    GROUP BY dept_id
+)
+SELECT e.name, e.salary, d.avg_salary
+FROM Employee e
+JOIN dept_avg d ON e.dept_id = d.dept_id;
+
+! Multiple CTEs
+WITH 
+dept_count AS (
+    SELECT dept_id, COUNT(*) as emp_count
+    FROM Employee
+    GROUP BY dept_id
+),
+dept_avg AS (
+    SELECT dept_id, AVG(salary) as avg_salary
+    FROM Employee
+    GROUP BY dept_id
+)
+SELECT dc.dept_id, dc.emp_count, da.avg_salary
+FROM dept_count dc
+JOIN dept_avg da ON dc.dept_id = da.dept_id;
+
+! Recursive CTE - Hierarchical data
+WITH RECURSIVE employee_hierarchy AS (
+    SELECT id, name, manager_id, 1 as level
+    FROM Employee
+    WHERE manager_id IS NULL
+    
+    UNION ALL
+    
+    SELECT e.id, e.name, e.manager_id, eh.level + 1
+    FROM Employee e
+    JOIN employee_hierarchy eh ON e.manager_id = eh.id
+)
+SELECT * FROM employee_hierarchy;
+
+! CTE for complex calculations
+WITH monthly_sales AS (
+    SELECT 
+        DATE_TRUNC('month', order_date) as month,
+        SUM(amount) as total_sales
+    FROM Orders
+    GROUP BY DATE_TRUNC('month', order_date)
+)
+SELECT month, total_sales,
+    LAG(total_sales) OVER (ORDER BY month) as prev_month_sales
+FROM monthly_sales;

@@ -1,0 +1,34 @@
+! SQL VIEWS - Virtual tables
+
+! Create View
+CREATE VIEW employee_details AS
+SELECT e.id, e.name, d.dept_name
+FROM Employee e
+LEFT JOIN Department d ON e.dept_id = d.dept_id;
+
+! Use View
+SELECT * FROM employee_details;
+SELECT * FROM employee_details WHERE dept_name = 'IT';
+
+! Update View
+CREATE OR REPLACE VIEW employee_details AS
+SELECT e.id, e.name, e.address, d.dept_name
+FROM Employee e
+LEFT JOIN Department d ON e.dept_id = d.dept_id;
+
+! Drop View
+DROP VIEW employee_details;
+
+! Materialized View (PostgreSQL)
+CREATE MATERIALIZED VIEW emp_summary AS
+SELECT dept_id, COUNT(*) as emp_count
+FROM Employee
+GROUP BY dept_id;
+
+! Refresh Materialized View
+REFRESH MATERIALIZED VIEW emp_summary;
+
+! Benefits:
+-- Simplify complex queries
+-- Security (hide columns)
+-- Reusability

@@ -1,0 +1,30 @@
+! DML - Data Manipulation Language
+
+! INSERT - Add data
+INSERT INTO Employee (id, name, address, dept_id) 
+VALUES (1, 'John Doe', '123 Main St', 1);
+
+INSERT INTO Employee VALUES (2, 'Jane Smith', '456 Oak Ave', 2);
+
+-- Multiple rows
+INSERT INTO Employee (id, name, address) VALUES 
+(3, 'Bob Wilson', '789 Pine Rd'),
+(4, 'Alice Brown', '321 Elm St');
+
+! SELECT - Retrieve data
+SELECT * FROM Employee;
+SELECT name, address FROM Employee;
+SELECT * FROM Employee WHERE dept_id = 1;
+SELECT * FROM Employee WHERE name LIKE 'J%';
+SELECT * FROM Employee WHERE id IN (1, 2, 3);
+SELECT * FROM Employee WHERE dept_id IS NULL;
+
+! UPDATE - Modify data
+UPDATE Employee SET dept_id = 1 WHERE id = 3;
+UPDATE Employee SET address = '999 New St', dept_id = 2 WHERE id = 4;
+UPDATE Employee SET dept_id = 1; -- Updates all rows
+
+! DELETE - Remove data
+DELETE FROM Employee WHERE id = 4;
+DELETE FROM Employee WHERE dept_id IS NULL;
+DELETE FROM Employee; -- Deletes all rows
